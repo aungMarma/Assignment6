@@ -1,0 +1,81 @@
+# from string
+    Size:
+        Empty.              [error]
+        Not Empty.
+    Format:
+        ASCII.       
+        Others.             [error]
+
+# to string
+    Size:                   
+        Empty.              [error]
+        Not Empty.
+    Format:
+        ASCII.       
+        Others.             [error]
+
+# File 
+    Size:
+        Empty.				[property emptyfile][single]
+        Not empty.
+    File format:
+        ASCII.       
+        Others.             [error]
+    Number of occurrences of the "from" in the file:
+        None.				[if !emptyfile][property noOccurrence][single]
+        One.				[if !emptyfile][property oneOccurrence]
+        Many.				[if !emptyfile][property manyOccurrence]
+    Number of occurrences of the "to" in the file:
+        None.				[if !emptyfile && noOccurrence][single]
+        One.				[if !emptyfile && oneOccurrence]
+        Many.				[if !emptyfile && manyOccurrence]
+
+# Filename
+  Presence of a file corresponding to the name:
+        Not present.		[error]
+        Present.
+
+# Flag -b
+    -b Flag specified:
+        Yes.                [property flag_b][single]
+        No.
+    Number of files in the argument:
+        None.               [if flag_b][single]
+        One.                [if flag_b][property one]
+        Two.                [if flag_b][property two]
+        Three.              [if flag_b][property three]
+        Four.               [if flag_b][property four]
+        Five.               [if flag_b][property five]
+    Number of backup files created:
+        None.               [error][if flag_b]
+        One.                [if flag_b && one]
+        Two.                [if flag_b && two]
+        Three.              [if flag_b && three]
+        Four.               [if flag_b && four]
+        Five.               [if flag_b && five]
+
+# Flag -f
+    -f Flag specified:
+        Yes.                [property flag_f]
+        No.
+    Position of occurrences of the "from" in the file:
+        First.			    [if flag_f]
+        Last.	            [if flag_f]
+        Any.                [if flag_f]
+
+# Flag -l
+    -l Flag specified:
+        Yes.                [property flag_l]
+        No.
+    Position of occurrences of the "from" in the file:
+        First.			    [if flag_l]
+        Last.	            [if flag_l]
+        Any.                [if flag_l]
+
+# Flag -i
+    -i Flag specified:
+        Yes.                [property flag_i]
+        No.
+    Case insensitive:
+        Yes.                [if flag_i]
+        No.                 [error][if flag_i]
